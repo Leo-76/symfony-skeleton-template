@@ -1,5 +1,5 @@
 {
-    "name": "your-vendor/symfony-skeleton",
+    "name": "lmendes/symfony-skeleton",
     "description": "A production-ready Symfony skeleton with Docker, CI/CD, and best practices",
     "type": "project",
     "license": "MIT",
