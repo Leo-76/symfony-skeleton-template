@@ -1,4 +1,4 @@
-# 🎼 Symfony Skeleton
+#  Symfony Skeleton
 
 [![CI](https://github.com/your-vendor/symfony-skeleton/actions/workflows/ci.yml/badge.svg)](https://github.com/your-vendor/symfony-skeleton/actions/workflows/ci.yml)
 [![PHP](https://img.shields.io/badge/PHP-8.2%2B-8892BF.svg)](https://php.net)
@@ -10,7 +10,7 @@ A **production-ready** Symfony 7.2 skeleton — Docker, full auth, admin panel, 
 
 ---
 
-## ✨ What's Included
+##  What's Included
 
 ### Infrastructure
 - PHP-FPM 8.2, multi-stage Dockerfile (base / dev / prod)
@@ -80,7 +80,7 @@ A **production-ready** Symfony 7.2 skeleton — Docker, full auth, admin panel, 
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ```bash
 composer create-project your-vendor/symfony-skeleton my-project
@@ -97,7 +97,7 @@ composer install
 
 ---
 
-## 🐳 Docker
+##  Docker
 
 ```bash
 cp .env .env.local
@@ -132,7 +132,7 @@ symfony serve
 
 ---
 
-## 🧪 Tests & Quality
+## Tests & Quality
 
 ```bash
 make test            # all suites
@@ -145,18 +145,18 @@ make security        # composer audit
 
 ---
 
-## 🔐 Fixture Users
+##  Fixture Users
 
 | Email | Password | Role |
 |-------|----------|------|
 | admin@example.com | admin123 | ROLE_ADMIN |
 | user@example.com | user123 | ROLE_USER |
 
-> ⚠️ Never load fixtures in production.
+>  Never load fixtures in production.
 
 ---
 
-## 🚢 Production
+##  Production
 
 ```bash
 docker build -f docker/php/Dockerfile --target prod -t my-app:latest .
@@ -166,7 +166,7 @@ Required env vars: `APP_SECRET`, `DATABASE_URL`, `MESSENGER_TRANSPORT_DSN`, `MAI
 
 ---
 
-## 📦 Publishing to Packagist
+##  Publishing to Packagist
 
 1. Replace `your-vendor/symfony-skeleton` in `composer.json`
 2. Push to a public GitHub repository
@@ -180,6 +180,6 @@ composer create-project your-vendor/symfony-skeleton my-project
 
 ---
 
-## 🤝 Contributing · 🔒 Security · 📄 License
+## 🤝 Contributing ·  Security ·  License
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), [LICENSE](LICENSE).
