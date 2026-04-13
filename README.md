@@ -164,19 +164,8 @@ docker build -f docker/php/Dockerfile --target prod -t my-app:latest .
 
 Required env vars: `APP_SECRET`, `DATABASE_URL`, `MESSENGER_TRANSPORT_DSN`, `MAILER_DSN`, `APP_NAME`, `APP_TIMEZONE`.
 
----
 
-##  Publishing to Packagist
 
-1. Replace `your-vendor/symfony-skeleton` in `composer.json`
-2. Push to a public GitHub repository
-3. Submit at https://packagist.org/packages/submit
-4. Enable the GitHub webhook for auto-updates
-5. `git tag v1.0.0 && git push origin v1.0.0`
-
-```bash
-composer create-project your-vendor/symfony-skeleton my-project
-```
 
 ---
 
