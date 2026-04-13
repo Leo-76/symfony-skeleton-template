@@ -1,0 +1,13 @@
+{% extends 'emails/base_email.html.twig' %}
+
+{% block subject %}Verify your email address{% endblock %}
+
+{% block content %}
+    <p>Hi {{ user.fullName }},</p>
+    <p>Please verify your email address by clicking the button below.</p>
+    <p>
+        <a href="{{ url('app_verify_email', {token: verificationToken}) }}" class="btn">Verify Email</a>
+    </p>
+    <p>If you did not create an account, you can safely ignore this email.</p>
+    <p>— The {{ app_name }} Team</p>
+{% endblock %}

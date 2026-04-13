@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Profile – {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Edit Profile</h1>
+
+    {{ form_start(form, {attr: {class: 'form-card'}}) }}
+        {{ form_row(form.fullName) }}
+        {{ form_row(form.email) }}
+
+        <div class="form-actions">
+            <button type="submit" class="btn">Save Changes</button>
+            <a href="{{ path('app_profile_show') }}" class="btn btn-secondary">Cancel</a>
+        </div>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

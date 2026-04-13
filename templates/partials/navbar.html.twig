@@ -1,0 +1,28 @@
+<nav class="navbar">
+    <a href="{{ path('app_home') }}" class="navbar-brand">
+        {{ app_name }}
+    </a>
+
+    <ul class="nav-links">
+        <li><a href="{{ path('app_home') }}" class="{{ is_current_route('app_home') ? 'active' }}">Home</a></li>
+
+        {% if app.user %}
+            {% if is_granted('ROLE_ADMIN') %}
+                <li><a href="{{ path('admin_user_list') }}" class="{{ is_current_route('admin_', true) ? 'active' }}">Admin</a></li>
+            {% endif %}
+            <li><a href="{{ path('app_profile_show') }}" class="{{ is_current_route('app_profile_', true) ? 'active' }}">
+                <span class="avatar avatar-sm">{{ app.user.fullName | initials }}</span>
+                {{ app.user.fullName }}
+            </a></li>
+            <li>
+                <form action="{{ path('app_logout') }}" method="post" style="display:inline">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('logout') }}">
+                    <button type="submit" class="btn btn-secondary btn-sm">Logout</button>
+                </form>
+            </li>
+        {% else %}
+            <li><a href="{{ path('app_login') }}" class="{{ is_current_route('app_login') ? 'active' }}">Login</a></li>
+            <li><a href="{{ path('app_register') }}" class="btn btn-sm">Register</a></li>
+        {% endif %}
+    </ul>
+</nav>

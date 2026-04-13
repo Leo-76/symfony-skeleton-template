@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome – {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="hero">
+        <h1>Welcome to {{ app_name }}</h1>
+        <p>A production-ready Symfony 7.2 skeleton.<br>Built with Docker, Auth, Pagination, Messenger, and best practices.</p>
+
+        {% if not app.user %}
+            <div class="hero-actions">
+                <a href="{{ path('app_register') }}" class="btn">Get Started</a>
+                <a href="{{ path('app_login') }}" class="btn btn-secondary">Sign In</a>
+            </div>
+        {% else %}
+            <div class="hero-actions">
+                <a href="{{ path('app_profile_show') }}" class="btn">My Profile</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ path('admin_user_list') }}" class="btn btn-secondary">Admin Panel</a>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="feature-grid">
+        <div class="feature-card">
+            <div class="feature-icon">🐳</div>
+            <h3>Docker Ready</h3>
+            <p>PHP-FPM, Nginx, PostgreSQL, Redis and Mailpit configured out of the box.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🔐</div>
+            <h3>Authentication</h3>
+            <p>Login, registration, remember me, password reset, and CSRF protection.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">📨</div>
+            <h3>Async Messenger</h3>
+            <p>Symfony Messenger with async transport, retry logic, and failed queue.</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon">🧪</div>
+            <h3>Tested</h3>
+            <p>PHPUnit 11, PHPStan level 8, PHP-CS-Fixer, and GitHub Actions CI.</p>
+        </div>
+    </div>
+
+    <div class="quick-links">
+        <a href="{{ path('health_check') }}" class="quick-link">🩺 Health Check</a>
+    </div>
+</div>
+{% endblock %}

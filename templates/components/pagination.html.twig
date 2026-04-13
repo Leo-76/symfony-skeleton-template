@@ -1,0 +1,60 @@
+{% if pagination.totalPages > 1 %}
+<nav aria-label="Pagination">
+    <ul class="pagination">
+
+        {# Previous #}
+        <li class="page-item {{ not pagination.hasPreviousPage ? 'disabled' }}">
+            <a class="page-link"
+               href="{{ pagination.hasPreviousPage ? path(route, params|merge({'page': pagination.previousPage})) : '#' }}"
+               aria-label="Previous">
+                &lsaquo;
+            </a>
+        </li>
+
+        {# First page + ellipsis #}
+        {% if pagination.pageRange[0] > 1 %}
+            <li class="page-item">
+                <a class="page-link" href="{{ path(route, params|merge({'page': 1})) }}">1</a>
+            </li>
+            {% if pagination.pageRange[0] > 2 %}
+                <li class="page-item disabled"><span class="page-link">&hellip;</span></li>
+            {% endif %}
+        {% endif %}
+
+        {# Page range #}
+        {% for p in pagination.pageRange %}
+            <li class="page-item {{ p == pagination.currentPage ? 'active' }}">
+                <a class="page-link" href="{{ path(route, params|merge({'page': p})) }}">{{ p }}</a>
+            </li>
+        {% endfor %}
+
+        {# Ellipsis + last page #}
+        {% set lastInRange = pagination.pageRange|last %}
+        {% if lastInRange < pagination.totalPages %}
+            {% if lastInRange < pagination.totalPages - 1 %}
+                <li class="page-item disabled"><span class="page-link">&hellip;</span></li>
+            {% endif %}
+            <li class="page-item">
+                <a class="page-link" href="{{ path(route, params|merge({'page': pagination.totalPages})) }}">
+                    {{ pagination.totalPages }}
+                </a>
+            </li>
+        {% endif %}
+
+        {# Next #}
+        <li class="page-item {{ not pagination.hasNextPage ? 'disabled' }}">
+            <a class="page-link"
+               href="{{ pagination.hasNextPage ? path(route, params|merge({'page': pagination.nextPage})) : '#' }}"
+               aria-label="Next">
+                &rsaquo;
+            </a>
+        </li>
+
+    </ul>
+
+    <p class="pagination-info">
+        {{ pagination.totalItems }} result{{ pagination.totalItems != 1 ? 's' }}
+        &mdash; page {{ pagination.currentPage }} / {{ pagination.totalPages }}
+    </p>
+</nav>
+{% endif %}

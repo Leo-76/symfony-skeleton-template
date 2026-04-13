@@ -1,0 +1,65 @@
+/* ─── Profile ────────────────────────────────────────────────── */
+.profile-header {
+    display:     flex;
+    align-items: center;
+    gap:         1.5rem;
+    padding:     2rem 0;
+}
+
+.avatar {
+    width:           3.5rem;
+    height:          3.5rem;
+    border-radius:   50%;
+    background:      var(--color-primary);
+    color:           #fff;
+    font-weight:     700;
+    font-size:       1.25rem;
+    display:         flex;
+    align-items:     center;
+    justify-content: center;
+    flex-shrink:     0;
+}
+
+.profile-details {
+    display:               grid;
+    grid-template-columns: max-content 1fr;
+    gap:                   .5rem 2rem;
+    margin:                1.5rem 0 2rem;
+}
+
+.profile-details dt { font-weight: 600; color: var(--color-muted); font-size: .875rem; }
+.profile-details dd { margin: 0; }
+
+/* ─── Forms (extras) ─────────────────────────────────────────── */
+.form-card {
+    background:    var(--color-surface);
+    border:        1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding:       2rem;
+    max-width:     480px;
+    box-shadow:    var(--shadow);
+}
+
+.form-group { margin-bottom: 1.25rem; }
+
+.form-label { display: block; font-weight: 600; margin-bottom: .25rem; font-size: .875rem; color: var(--color-muted); }
+.form-label.required::after { content: ' *'; color: var(--color-danger); }
+
+.form-error { color: var(--color-danger); font-size: .825rem; margin-top: .25rem; }
+.form-help  { color: var(--color-muted);  font-size: .825rem; margin-top: .25rem; }
+
+.has-error input,
+.has-error select,
+.has-error textarea { border-color: var(--color-danger); }
+
+.form-actions { display: flex; gap: .75rem; margin-top: 1.5rem; }
+
+.btn-secondary {
+    background: transparent;
+    color:      var(--color-text);
+    border:     1px solid var(--color-border);
+}
+
+.btn-secondary:hover { background: var(--color-bg); box-shadow: none; transform: none; }
+
+.text-muted { color: var(--color-muted); }

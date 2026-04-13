@@ -1,0 +1,7 @@
+{
+    "_readme": [
+        "This file locks the recipes used in your application",
+        "to a specific version so they are not accidentally upgraded.",
+        "More info at https://symfony.sh"
+    ]
+}

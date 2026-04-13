@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}Reset Password – {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="auth-card">
+        <h1>Choose a new password</h1>
+
+        {{ form_start(form, {attr: {class: 'form-card'}}) }}
+            {{ form_row(form.newPassword.first) }}
+            {{ form_row(form.newPassword.second) }}
+            <div class="form-actions">
+                <button type="submit" class="btn">Reset Password</button>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

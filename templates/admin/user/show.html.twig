@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ user.fullName }} – Admin – {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <a href="{{ path('admin_user_list') }}" class="btn btn-secondary">&larr; Back to Users</a>
+
+    <div class="profile-header" style="margin-top:1.5rem">
+        <div class="avatar">{{ user.fullName | initials }}</div>
+        <div>
+            <h1>{{ user.fullName }}</h1>
+            <p class="text-muted">{{ user.email }}</p>
+        </div>
+    </div>
+
+    <dl class="profile-details">
+        <dt>ID</dt>         <dd><code>{{ user.id }}</code></dd>
+        <dt>Roles</dt>      <dd>{{ user.roles | join(', ') }}</dd>
+        <dt>Verified</dt>   <dd>{{ user.isVerified ? '✅ Yes' : '❌ No' }}</dd>
+        <dt>Joined</dt>     <dd>{{ user.createdAt | date('d/m/Y H:i') }}</dd>
+        <dt>Last login</dt> <dd>{{ user.lastLoginAt ? user.lastLoginAt | date('d/m/Y H:i') : '—' }}</dd>
+    </dl>
+
+    <div class="action-bar">
+        {# Toggle admin #}
+        <form method="post" action="{{ path('admin_user_toggle_admin', {id: user.id}) }}">
+            <input type="hidden" name="_token" value="{{ csrf_token('toggle-admin-' ~ user.id) }}">
+            <button class="btn {% if 'ROLE_ADMIN' in user.roles %}btn-secondary{% endif %}">
+                {% if 'ROLE_ADMIN' in user.roles %}Remove Admin{% else %}Make Admin{% endif %}
+            </button>
+        </form>
+
+        {# Delete #}
+        <form method="post" action="{{ path('admin_user_delete', {id: user.id}) }}"
+              onsubmit="return confirm('Delete {{ user.email }}? This cannot be undone.')">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete-user-' ~ user.id) }}">
+            <button class="btn btn-danger">Delete User</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

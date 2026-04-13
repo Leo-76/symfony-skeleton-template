@@ -1,0 +1,21 @@
+parameters:
+    app.name:         '%env(APP_NAME)%'
+    app.timezone:     '%env(APP_TIMEZONE)%'
+    app.sender_email: 'noreply@example.com'
+
+services:
+    _defaults:
+        autowire:      true
+        autoconfigure: true
+        bind:
+            string $projectDir:  '%kernel.project_dir%'
+            string $appName:     '%app.name%'
+            string $senderEmail: '%app.sender_email%'
+            string $environment: '%kernel.environment%'
+
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'

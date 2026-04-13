@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+{% block title %}Users – Admin – {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="page-header">
+        <h1>Users <span class="badge">{{ pagination.totalItems }}</span></h1>
+    </div>
+
+    <form method="get" class="search-bar">
+        <input type="search" name="q" value="{{ search }}" placeholder="Search by name or email…" class="search-input">
+        <button type="submit" class="btn">Search</button>
+        {% if search %}<a href="{{ path('admin_user_list') }}" class="btn btn-secondary">Clear</a>{% endif %}
+    </form>
+
+    {% if pagination.isEmpty %}
+        <p class="text-muted">No users found.</p>
+    {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Roles</th>
+                    <th>Verified</th>
+                    <th>Joined</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in pagination.items %}
+                <tr>
+                    <td>
+                        <div class="user-cell">
+                            <span class="avatar avatar-sm">{{ user.fullName | initials }}</span>
+                            {{ user.fullName }}
+                        </div>
+                    </td>
+                    <td>{{ user.email }}</td>
+                    <td>
+                        {% for role in user.roles %}
+                            {% if role != 'ROLE_USER' %}
+                                <span class="badge badge-primary">{{ role }}</span>
+                            {% endif %}
+                        {% endfor %}
+                    </td>
+                    <td>{{ user.isVerified ? '✅' : '❌' }}</td>
+                    <td>{{ user.createdAt | date('d/m/Y') }}</td>
+                    <td>
+                        <a href="{{ path('admin_user_show', {id: user.id}) }}" class="btn btn-sm">View</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {{ include('components/pagination.html.twig', {
+            pagination: pagination,
+            route: 'admin_user_list',
+            params: {q: search}
+        }) }}
+    {% endif %}
+</div>
+{% endblock %}

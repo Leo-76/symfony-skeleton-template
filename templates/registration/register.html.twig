@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create Account – {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="auth-card">
+        <h1>Create an account</h1>
+        <p class="text-muted">Already have an account? <a href="{{ path('app_login') }}">Sign in</a></p>
+
+        {{ form_start(form, {attr: {class: 'form-card'}}) }}
+            {{ form_row(form.fullName) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.plainPassword) }}
+            {{ form_row(form.agreeTerms) }}
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Create Account</button>
+            </div>
+        {{ form_end(form) }}
+    </div>
+</div>
+{% endblock %}

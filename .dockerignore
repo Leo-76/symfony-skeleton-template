@@ -1,0 +1,40 @@
+# Git
+.git
+.gitignore
+.gitattributes
+
+# Docker
+docker-compose*.yml
+docker-compose*.yaml
+Dockerfile
+.dockerignore
+
+# Dependencies
+vendor/
+node_modules/
+
+# Dev / test files
+.env.local
+.env.*.local
+.env.test
+phpunit.xml
+phpstan.neon
+.php-cs-fixer.php
+.php-cs-fixer.cache
+
+# CI
+.github/
+
+# IDE
+.idea/
+.vscode/
+
+# Cache / logs
+var/cache/
+var/log/
+var/coverage/
+
+# Docs
+README.md
+CHANGELOG.md
+docs/
