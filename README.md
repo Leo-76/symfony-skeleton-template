@@ -169,6 +169,6 @@ Required env vars: `APP_SECRET`, `DATABASE_URL`, `MESSENGER_TRANSPORT_DSN`, `MAI
 
 ---
 
-## 🤝 Contributing ·  Security ·  License
+## Contributing ·  Security ·  License
 
 See [CONTRIBUTING.md](CONTRIBUTING.md), [SECURITY.md](SECURITY.md), [LICENSE](LICENSE).
