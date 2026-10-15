@@ -1,5 +1,5 @@
 {
-    "name": "lmendes/symfony-skeleton",
+    "name": "leo-76/symfony-skeleton-template",
     "description": "A production-ready Symfony skeleton with Docker, CI/CD, and best practices",
     "type": "project",
     "license": "MIT",
